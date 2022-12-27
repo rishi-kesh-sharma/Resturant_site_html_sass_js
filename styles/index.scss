@@ -1,0 +1,271 @@
+// text
+$text-black: black;
+$font-sans: sans-serif;
+$text-orange: rgb(202, 94, 5);
+$text-white: white;
+$text-gray: gray;
+$text-mild-white: rgb(224, 224, 224);
+
+// backgrounds
+$bg-black: black;
+$bg-mild-black: rgb(41, 40, 40);
+$bg-gray: gray;
+$bg-orange: rgb(202, 94, 5);
+
+// borders
+$dark-border: 1px solid black;
+$white-border: 1px solid white;
+$mild-white-border: 1px solid rgb(224, 224, 224);
+$orange-border: 1px solid rgb(202, 94, 5);
+
+// paddings
+$p-xs: 0.3rem;
+$p-sm: 0.6rem;
+$p-1: 1rem;
+$p-2: 2rem;
+$p-3: 3rem;
+$p-4: 4rem;
+$p-5: 5rem;
+$p-6: 6rem;
+$p-7: 7rem;
+$p-lg: 8rem;
+$p-xl: 10rem;
+
+// margins
+$m-xs: 0.3rem;
+$m-sm: 0.6rem;
+$m-1: 1rem;
+$m-2: 2rem;
+$m-3: 3rem;
+$m-4: 4rem;
+$m-5: 5rem;
+$m-6: 6rem;
+$m-7: 7rem;
+$m-lg: 8rem;
+$p-xl: 10rem;
+
+//fonts
+$font-light: 400;
+$font-bold: 600;
+$font-bolder: 800;
+$font-xxl: 4rem;
+$font-xl: 2rem;
+$font-lg: 1.5rem;
+$font-md: 1rem;
+$font-sm: 0.8rem;
+$font-xs: 0.6rem;
+
+// MIXINS
+
+@mixin theme($theme: rgb(50, 48, 48)) {
+  background: $theme;
+  box-shadow: 0 0 1px rgba($theme, 0.25);
+  color: #fff;
+}
+@mixin flex($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  // gap: $row-gap $column-gap;
+}
+%elem-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%btn-primary {
+  color: #fff;
+  background-color: $bg-orange;
+  text-align: center;
+  margin: auto;
+  border: 1px solid white;
+}
+%btn-transparent {
+  color: #fff;
+  text-align: center;
+  margin: auto;
+  border: 1px solid white;
+  background-color: transparent;
+}
+%rounded-full {
+  border-radius: 50%;
+}
+
+%card-sm {
+  height: 400px;
+  width: 400px;
+  padding: $p-1 $p-1;
+  box-shadow: 5px 5px 10px rgb(133, 132, 132);
+}
+
+// styles
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-sans;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+// main page
+
+.main-page {
+  width: 100%;
+  position: relative;
+}
+.nav-wrapper {
+  height: 50px;
+  width: 100%;
+}
+.navbar {
+  @include flex(row, space-between, center);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+}
+
+.nav-brand {
+  img {
+    height: 4rem;
+    width: 6rem;
+    @extend %rounded-full;
+  }
+}
+.nav-links {
+  @include flex(column, center, center);
+  gap: 2rem 1rem;
+  li.nav-link {
+    font-size: $font-md;
+    border-bottom: $mild-white-border;
+    width: 100%;
+    padding: $p-xs $p-2;
+  }
+  position: fixed;
+  right: 0;
+  top: 0rem;
+  //height: 100vh;
+  bottom: 0;
+  left: 40vw;
+  z-index: 1;
+  background-color: $bg-orange;
+  color: $text-mild-white;
+  transition: left 0.6s linear;
+  -webkit-transition: left 0.6s linear;
+  -moz-transition: left 0.6s linear;
+  -ms-transition: left 0.6s linear;
+  -o-transition: left 0.6s linear;
+}
+
+.nav-links {
+  display: none;
+}
+.nav-links.show {
+  display: flex;
+}
+.nav-features {
+  position: absolute;
+  z-index: 1;
+  top: 2rem;
+  left: 49vw;
+  @include flex(row, space-between, center);
+  gap: 0 1rem;
+  // display: none;
+  li {
+    font-size: 1.2rem;
+    color: $text-mild-white;
+  }
+  li#nav-search {
+    display: none;
+  }
+}
+.nav-features {
+  display: none;
+}
+.nav-features.show {
+  display: flex;
+}
+.nav-toggle-btn {
+  position: fixed;
+  right: 2rem;
+
+  z-index: 2;
+  i.fa-bars {
+    font-size: $font-xl;
+    font-weight: $font-bolder;
+    color: $text-orange;
+    cursor: pointer;
+  }
+  i.fa-times {
+    position: absolute;
+    top: -30px;
+
+    font-size: $font-xl;
+    font-weight: $font-bolder;
+    color: $text-mild-white;
+    cursor: pointer;
+  }
+}
+
+// home section styling
+
+section#home {
+  @include flex(column-reverse, center, center);
+  background-color: $bg-black;
+  padding-bottom: 2rem;
+  gap: 1rem;
+  .left-section {
+    @include flex(column, center, center);
+    gap: 1rem;
+    h2 {
+      color: $text-white;
+      font-size: $font-xl;
+      // font-weight: $font-bolder;
+      text-align: center;
+    }
+    p {
+      color: $text-gray;
+      // opacity: 0.7;
+      // margin-top: $m-1;
+      width: 60vw;
+      text-align: center;
+      // text-align: center;
+    }
+    .btns {
+      padding-top: 1rem;
+      @include flex(row, center, center);
+      gap: 1rem;
+      button {
+        color: white;
+        border-radius: 0.5rem;
+        padding: 0.7rem;
+        -webkit-border-radius: 0.5rem;
+        -moz-border-radius: 0.5rem;
+        -ms-border-radius: 0.5rem;
+        -o-border-radius: 0.5rem;
+        cursor: pointer;
+      }
+      button:first-of-type {
+        @extend %btn-primary;
+        border: none;
+      }
+      button:last-of-type {
+        @extend %btn-transparent;
+      }
+    }
+  }
+  .right-section {
+    img {
+      height: 70vmin;
+      width: 70vmin;
+    }
+  }
+}

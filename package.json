@@ -1,0 +1,16 @@
+{
+  "name": "resturant_site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass-build": "sass --watch styles/index.scss styles/index.css ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.57.0"
+  }
+}
